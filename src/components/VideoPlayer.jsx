@@ -7,11 +7,11 @@ const VideoPlayer = ({ videoId, muted }) => {
   const [video, setVideo] = useState(null);
   const [videoTitle, setVideoTitle] = useState(null);
 
-
+  const apiKey = process.env.API_KEY;
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=AIzaSyDb9qFHPemuFLMJuBrmxjg5awl5DWVoAHk&part=snippet`
+        `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&key=${apiKey}&part=snippet`
       )
       .then((response) => {
         const title = response.data.items[0].snippet.title;
